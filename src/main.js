@@ -1,4 +1,5 @@
 import * as Comlink from 'comlink';
+import MyWorker from './worker?worker'
 // import { init, WASI } from '@wasmer/wasi';
 // await init();
 
@@ -30,12 +31,15 @@ import * as Comlink from 'comlink';
  // This should print "hello world (exit code: 0)"
 // console.log(`${stdout}`);
 
-  const worker =  new Worker(new URL('./worker.js', import.meta.url), {
-      type: 'module'
-  })
+  // const worker =  new Worker(new URL('./worker.js', import.meta.url), {
+  //     type: 'module'
+  // })
 
+  function delay(time) {
+    return new Promise(resolve => setTimeout(resolve, time));
+  }
+  const worker = new MyWorker();
   const obj = Comlink.wrap(worker);
-  
-  // console.log(`std.out:`, await obj.stdout)
+  await delay(1200);
   document.body.prepend(document.createTextNode('Output:'))
   document.querySelector("#output").innerHTML = await obj.stdout
