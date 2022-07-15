@@ -12,6 +12,7 @@
   "dependencies": {
     "@esbuild-plugins/node-globals-polyfill": "^0.1.1",
     "@wasmer/wasi": "^1.0.2",
+    "@wasmer/wasmfs": "^0.12.0",
     "vite": "^3.0.0"
   }
 }
