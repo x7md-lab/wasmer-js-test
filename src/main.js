@@ -35,8 +35,7 @@ import * as Comlink from 'comlink';
   })
 
   const obj = Comlink.wrap(worker);
-  console.log(`std.out:`, await obj.stdout)
-  // for (let i = 0; i < 10; i++){
-  //   await obj.inc();
-  // }
- 
+  
+  // console.log(`std.out:`, await obj.stdout)
+  document.body.prepend(document.createTextNode('Output:'))
+  document.querySelector("#output").innerHTML = await obj.stdout
